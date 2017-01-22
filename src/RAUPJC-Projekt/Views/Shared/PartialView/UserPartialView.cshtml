@@ -1,0 +1,20 @@
+@using Microsoft.AspNetCore.Http
+@using RAUPJC_Projekt.Core
+@model RAUPJC_Projekt.Models.ApplicationUser
+@inject UserManager<ApplicationUser> UserManager
+@inject IHttpContextAccessor HttpContextAccessor
+
+<tr>
+    <td>@Model.UserName</td>
+    <td><a asp-action="UserDetails" asp-controller="Employee" asp-route-userId="@Model.Id" class="btn btn-info">Detalji</a></td>
+    @if (HttpContextAccessor.HttpContext.User.IsInRole(Constants.AdministratorRoleName))
+    {
+        <td><a asp-action="AddToRole" asp-controller="Administrator" asp-route-userId="@Model.Id" class="btn btn-info">Dodaj ulogu</a></td>
+        <td><a asp-action="RemoveFromRole" asp-controller="Administrator" asp-route-userId="@Model.Id" class="btn btn-info">Ukloni ulogu</a></td>
+        <td><a asp-action="RemoveUser" asp-controller="Administrator" asp-route-userId="@Model.Id" class="btn btn-info">Ukloni korisnika</a></td>
+    }
+</tr>
+
+
+
+

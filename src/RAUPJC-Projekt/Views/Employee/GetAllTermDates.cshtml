@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Http
+@model System.Linq.IOrderedEnumerable<RAUPJC_Projekt.Core.TermDateLogic.TermDate>
+
+@inject IHttpContextAccessor HttpContextAccessor
+
+<body>
+<div class="container">
+    <div><h4>Svi termini</h4></div>
+    <table class="table table-responsive table-hover table-condensed">
+        <thead>
+        <tr>
+            <th>Korisnik</th>
+            <th>Usluga</th>
+            <th>Vrijeme početka</th>
+            <th>Vrijeme kraja</th>
+            <th>Opis</th>
+            <th>Izbriši termin</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var termDate in Model)
+        {
+            @Html.Partial("PartialView/TermDatePartialView", termDate)
+        }
+        </tbody>
+    </table>
+</div>
+
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+    </script>
+</body>

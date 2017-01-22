@@ -1,0 +1,74 @@
+﻿@using System.Threading.Tasks
+@using Microsoft.AspNetCore.Http
+@using RAUPJC_Projekt.Core
+@model IList<RAUPJC_Projekt.Core.TermDateLogic.TermDate>
+
+@inject IHttpContextAccessor HttpContextAccessor
+@inject UserManager<ApplicationUser> UserManager
+
+<body>
+<div class="container">
+    @{
+        var user = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<ApplicationUser>(Constants.SessionKeyUser);
+        <div class="row"><h4>Detalji korisnika: @user.UserName</h4></div>
+        <div class="row">Id: @user.Id</div>
+        <div class="row">E-mail: @user.Email</div>
+        @if (user.EmailConfirmed)
+         {
+            <div class="row">Email potvrđen: DA</div>
+         }
+         else
+         {
+            <div class="row">Email potvrđen: NE</div>
+         }
+        <div class="row">Telefon: @user.PhoneNumber</div>
+        <div class="row">Broj neuspjelih pokušaja prijave: @user.AccessFailedCount</div>
+        <div class="row">
+        <div class="col-sm-1">Uloge:</div>
+        <div class="col-sm-2">
+            @foreach (var role in UserManager.GetRolesAsync(user).Result)
+            {
+                <p>@role</p>
+            }
+        </div>
+        </div>
+        
+    }
+    <div class="row"><h4>Svi termini ovog korisnika: </h4></div>
+    <div class="row">
+        <table class="table table-responsive table-condensed">
+            <thead>
+            <tr>
+                <th>Usluga</th>
+                <th>Početak</th>
+                <th>Kraj</th>
+                <th>Opis</th>
+                <th>Ukloni termin</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var termDate in Model)
+            {
+                @Html.Partial("PartialView/TermDatePartialView", termDate)
+            }
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        @if (HttpContextAccessor.HttpContext.User.IsInRole(Constants.AdministratorRoleName))
+        {
+            <div class="col-sm-1">
+                <a asp-action="Index" asp-controller="Administrator" class="btn btn-success">Natrag</a>
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-1">
+                <a asp-action="Index" asp-controller="Employee" class="btn btn-success">Natrag</a>
+            </div>
+        }
+    </div>
+
+
+</div>
+</body>

@@ -1,0 +1,19 @@
+﻿@model RAUPJC_Projekt.Models.AdministratorViewModels.RoleViewModel
+
+<body>
+<div class="container">
+        <div class="row"><h4>Kreiraj ulogu:</h4></div>
+    <form asp-action="CreateRole" method="post" class="form-horizontal">
+        <div class="row form-group">
+            <label class="control-label" for="rolename">Ime uloge: </label>
+            <input type="text" asp-for="RoleName" class="form-control" id="rolename" placeholder="Ime uloge"/>
+            <span asp-validation-for="RoleName"></span>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"><input type="submit" class="btn btn-success" value="Potvrdi"/></div>
+            <div class="col-sm-1"><a asp-action="Index" asp-controller="Administrator" class="btn btn-danger">Otkaži</a></div>
+        </div>
+    </form>
+
+</div>
+</body>

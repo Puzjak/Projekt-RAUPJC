@@ -1,0 +1,42 @@
+﻿@model System.Collections.Generic.List<RAUPJC_Projekt.Core.TermDateLogic.TermDate>
+
+
+<body>
+    <div class="container">
+        <div class="row"><h4>Svi termini</h4></div>
+        <table class="table table-responsive table-hover table-condensed">
+            <thead>
+            <tr>
+                <th>Usluga</th>
+                <th>Opis</th>
+                <th>Vrijeme početka</th>
+                <th>Vrijeme kraja</th>
+                <th>Izbriši termin</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var termDate in Model)
+            {
+                @Html.Partial("PartialView/TermDatePartialView", termDate)
+            }
+            </tbody>
+        </table>
+        <div class="btn-group">
+            <a asp-action="GetActive" asp-controller="Customer" class="btn btn-info">Pogledaj sve aktivne termine</a>
+            <a asp-action="GetCompleted" asp-controller="Customer" class="btn btn-info">Pogledaj sve završene termine</a>
+        </div>
+    </div>
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    </script>
+
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+    </script>
+
+</body>
+

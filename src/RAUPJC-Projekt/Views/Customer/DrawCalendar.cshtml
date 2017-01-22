@@ -1,0 +1,48 @@
+﻿@using System.Threading.Tasks
+@model string
+
+<div id="calendar"></div>
+<script>
+
+    $(document)
+        .ready(function() {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'title',
+                    center: 'prev, today, next',
+                    right: 'month, agendaWeek, agendaDay'
+                },
+                defaultView: 'agendaWeek',
+                hiddenDays: [0],
+                bussinesHours: {
+                    start: '09:00',
+                    end: '20:00'
+                },
+                minTime: '09:00:00',
+                maxTime: '20:00:00',
+                timeFormat: 'H(:mm)',
+                aspectRatio: 2,
+                allDaySlot: false,
+                monthNames: [
+                    'Siječanj', 'Veljača', 'Ožujak', 'Travanj', 'Svibanj', 'Lipanj',
+                    'Srpanj', 'Kolovoz', 'Rujan', 'Listopad', 'Studeni', 'Prosinac'
+                ],
+                monthNamesShort: [
+                    'Sij', 'Velj', 'Ožu', 'Tra', 'Svi', 'Lip',
+                    'Srp', 'Kol', 'Ruj', 'Lis', 'Stu', 'Pro'
+                ],
+                dayNames: [
+                    'Nedjelja', 'Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak',
+                    'Petak', 'Subota'
+                ],
+                dayNamesShort: [
+                    'Ned', 'Pon', 'Uto', 'Sri', 'Čet', 'Pet', 'Sub'
+                ],
+                @Html.Raw(@Model)
+            });
+        });
+
+</script>
+
+
+

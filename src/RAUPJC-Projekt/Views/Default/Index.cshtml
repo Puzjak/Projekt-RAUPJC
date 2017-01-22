@@ -1,0 +1,14 @@
+﻿@using RAUPJC_Projekt.Core
+@model dynamic
+
+<body>
+<div class="container">
+    <a asp-action="Add" asp-route-role="@Constants.AdministratorRoleName">
+        <input type="button" value="@Constants.AdministratorRoleName"/>
+    </a>
+    <br/>
+    <a asp-action="Add" asp-route-role="@Constants.EmployeeRoleName">
+        <input type="button" value="@Constants.EmployeeRoleName" />
+    </a>
+</div>
+</body>

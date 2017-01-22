@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Identity.EntityFrameworkCore
+@model RAUPJC_Projekt.Models.AdministratorViewModels.RoleViewModel
+
+@inject RoleManager<IdentityRole> RoleManager
+
+<body>
+<div class="container">
+    <div class="row"><h4>Dodaj ulogu korisniku</h4></div>
+    <form asp-action="AddToRole" method="post" class="form-group">
+        <div class="row">
+            <div class="col-sm-1">Odaberi ulogu: </div>
+            <div class="col-sm-2">
+                <select asp-for="RoleName" class="form-control">
+                    @foreach (var role in RoleManager.Roles)
+                    {
+                        <option value="@role.Name">@role.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1">
+                <input type="submit" class="btn btn-success width: 70%" value="Potvrdi"/>
+            </div>
+            <div class="col-sm-1">
+                <a asp-action="Index" asp-controller="Administrator">
+                    <input type="button" class="btn btn-warning width: 70%" value="Otkaži"/>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>

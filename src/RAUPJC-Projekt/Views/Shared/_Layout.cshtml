@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Http
+@using RAUPJC_Projekt.Core
+@inject IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elegant</title>
+ 
+
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="~/lib/bootswatch/slate/bootstrap.css"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="~/lib/fullcalendar/dist/fullcalendar.css">
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/moment/min/moment.min.js"></script>
+    <script src="~/lib/fullcalendar/dist/fullcalendar.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    
+    <style>
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 70%;
+            margin: auto;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Elegant</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Naslovnica</a></li>
+                    <li><a asp-area="" asp-controller="Customer" asp-action="Index">Naruči se</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Kontakt</a></li>
+                    <li><a asp-area="" asp-controller="Customer" asp-action="DrawCalendar">Pogledaj kalendar</a></li>
+                    @if (HttpContextAccessor.HttpContext.User.IsInRole(Constants.EmployeeRoleName))
+                    {
+                        <li><a asp-area="" asp-controller="Employee" asp-action="Index">Zaposlenik</a></li>
+                    }
+                    @if (HttpContextAccessor.HttpContext.User.IsInRole(Constants.AdministratorRoleName))
+                    {
+                        <li><a asp-area="" asp-controller="Administrator" asp-action="Index">Administrator</a></li>
+                    }
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2017 - Frizerski Studio Elegant - Sva prava pridržana</p>
+        </footer>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

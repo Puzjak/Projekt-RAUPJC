@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Http
+@using RAUPJC_Projekt.Core
+@model System.Collections.Generic.IList<RAUPJC_Projekt.Models.ApplicationUser>
+
+@inject IHttpContextAccessor HttpContextAccessor
+
+<body>
+<div class="container">
+    <div class="row"><h4>Svi klijenti:</h4></div>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-hover table-condensed">
+                <thead>
+                <tr>
+                    <th>E-mail</th>
+                    <th>Detalji</th>
+
+                    @if (HttpContextAccessor.HttpContext.User.IsInRole(Constants.AdministratorRoleName))
+                    {
+                        <th>Dodaj ulogu</th>
+                        <th>Ukloni ulogu</th>
+                        <th>Ukloni korisnika</th>
+                    }
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var user in Model)
+                {
+                    @Html.Partial("PartialView/UserPartialView", user);
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        @if (HttpContextAccessor.HttpContext.User.IsInRole(Constants.AdministratorRoleName))
+        {
+            <div class="col-sm-1">
+                <a asp-action="Index" asp-controller="Administrator" class="btn btn-success">Natrag</a>
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-1">
+                <a asp-action="Index" asp-controller="Employee" class="btn btn-success">Natrag</a>
+            </div>
+        }
+    </div>
+</div>          
+</body>

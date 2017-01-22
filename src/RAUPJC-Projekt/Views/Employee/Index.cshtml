@@ -1,0 +1,40 @@
+﻿<body>
+    <div class="container">
+        <div class="row"><h4>Zaposlenik</h4></div>
+        <div class="row">
+            <div class="col-sm-4">
+                <a asp-action="GetCustomers" asp-controller="Employee" class="btn btn-info btn-block">
+                    Pogledaj sve klijente
+                </a>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <a asp-action="GetAllActiveTermDates" asp-controller="Employee" class="btn btn-info btn-block">
+                        Pogledaj sve aktivne rezervirane termine
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <a asp-action="GetAllCompletedTermDates" asp-controller="Employee" class="btn btn-info btn-block">
+                        Pogledaj sve završene rezervirane termine
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <a asp-action="GetAllTermDates" asp-controller="Employee" class="btn btn-info btn-block">
+                        Pogledaj sve rezervirane termine
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <a asp-action="RemoveCompleted" asp-controller="Employee" class="btn btn-danger btn-block">
+                        Ukloni sve završene termine
+                    </a>
+                </div>
+            </div>
+        </div>
+</body>

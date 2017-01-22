@@ -1,0 +1,71 @@
+<body>
+<div class="container">
+    <div class="row" style="align-content: center"><h2>Administrator</h2></div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-action="CreateRole" asp-controller="Administrator" class="btn btn-info btn-block">
+                Kreiraj novu ulogu
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-action="GetRoles" asp-controller="Administrator" class="btn btn-info btn-block">
+                Pogledaj sve uloge
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-action="GetCustomers" asp-controller="Administrator" class="btn btn-info btn-block">
+                Pogledaj sve klijente
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-action="GetEmployees" asp-controller="Administrator" class="btn btn-info btn-block">
+                Pogledaj sve zaposlenike
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-action="GetAllActiveTermDates" asp-controller="Employee" class="btn btn-info btn-block">
+                Pogledaj sve aktivne termine
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-action="GetAllCompletedTermDates" asp-controller="Employee" class="btn btn-info btn-block">
+                Pogledaj sve završene termine
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-action="GetAllTermDates" asp-controller="Employee" class="btn btn-info btn-block">
+                Pogledaj sve rezervirane termine
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-action="GetAllServices" asp-controller="Administrator" class="btn btn-info btn-block">
+                Pogledaj sve usluge
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <a asp-action="AddService" asp-controller="Administrator" class="btn btn-info btn-block">
+                Dodaj uslugu
+            </a>
+        </div>
+    </div>
+    <br/>
+    <hr/>
+    <br/>
+</div>
+</body>

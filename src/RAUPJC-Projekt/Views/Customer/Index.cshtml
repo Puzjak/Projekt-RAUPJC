@@ -1,0 +1,45 @@
+﻿@using RAUPJC_Projekt.Core.ServiceLogic
+@model RAUPJC_Projekt.Models.CustomerViewModels.DateAndServicePickerViewModel
+
+@inject IServiceRepository Repository
+
+
+<div class="container">
+    <br/>
+    <h4>Naruči se</h4>
+
+    <div class="container">
+        <form asp-action="Index" method="post" class="form-group">
+            <div class="row">
+                <div>
+                    <label for="datum">Odaberi datum: </label>
+                    <div class="col-sm-3 form-group">
+                        <input id="datum" asp-for="Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" max="@DateTime.Now.AddMonths(2).ToString("yyyy-MM-dd")" style="width: 100%" class="form-control"/>
+                        <span asp-validation-for="Date"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label for="usluga">Odaberi uslugu: </label>
+                <div class="col-sm-3 form-group">
+                    <select id="usluga" asp-for="Id" class="form-control" style="width: 100%">
+                        <option></option>
+                        @foreach (var service in Repository.GetAll())
+                        {
+                            <option value="@service.ServiceId">@service.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="Id"></span>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" class="btn btn-info" value="Potvrdi"/>
+            </div>
+        </form>
+        <div class="row">
+            <a asp-action="GetAll" asp-controller="Customer"><input type="submit" class="btn btn-success" value="Pogledaj svoje termine"/></a>
+        </div>
+    </div>
+    <br/> <br/>
+    
+</div>

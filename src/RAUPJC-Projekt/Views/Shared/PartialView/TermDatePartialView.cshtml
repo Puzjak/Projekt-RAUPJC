@@ -1,0 +1,47 @@
+@using Microsoft.AspNetCore.Http
+@using RAUPJC_Projekt.Core
+@model RAUPJC_Projekt.Core.TermDateLogic.TermDate
+@inject IHttpContextAccessor HttpContextAccessor
+@inject UserManager<ApplicationUser> UserManager
+<tr>
+    @if (HttpContextAccessor.HttpContext.User.IsInRole(Constants.AdministratorRoleName) || HttpContextAccessor.HttpContext.User.IsInRole(Constants.EmployeeRoleName))
+    {
+        <td>
+            <a asp-action="UserDetails" asp-controller="Employee" asp-route-userId="@Model.UserId.ToString()">
+                @UserManager.FindByIdAsync(Model.UserId.ToString()).Result.Email
+            </a>
+        </td>
+    }
+    
+    <td>@Model.Service.Name</td>
+    <td>@Model.StartOfTerm.ToString("g")</td>
+    <td>@Model.EndOfTerm.ToString("g")</td>
+    <td>
+        <a href="#" data-toggle="popover" data-placement="bottom" title="Opis" data-content="@Model.Description">
+            <input type="button" class="btn btn-info" value="Opis"/>
+        </a>
+    </td>
+    <td>
+        @if (HttpContextAccessor.HttpContext.User.IsInRole(Constants.AdministratorRoleName) ||
+             HttpContextAccessor.HttpContext.User.IsInRole(Constants.EmployeeRoleName))
+        {
+            <a asp-action="Remove" asp-controller="Employee" asp-route-id="@Model.TermDateId" class="btn btn-danger">
+                Izbriši termin
+            </a>
+        }
+        else
+        {
+            if ((Model.StartOfTerm.Date == DateTime.Now.Date.AddDays(1) || Model.StartOfTerm.Date == DateTime.Now.Date) && !Model.IsCompleted())
+            {
+                <input type="button" class="btn btn-danger disabled" data-toggle="tooltip" data-placement="bottom" title="Ne može se izbrisati termin ako je ostao jedan dan do izvršenja. Ukoliko ne možete doæi na termin molimo Vas da kontaktirate frizerski salon." value="Izbriši termin"/>
+            }
+            else
+            {
+                <a asp-action="Remove" asp-controller="Customer" asp-route-id="@Model.TermDateId" class="btn btn-danger">
+                    Izbriši termin
+                </a>
+            }
+        }
+    </td>
+</tr>
+

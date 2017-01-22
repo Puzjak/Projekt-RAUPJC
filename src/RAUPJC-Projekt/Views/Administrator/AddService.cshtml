@@ -1,0 +1,22 @@
+﻿@model RAUPJC_Projekt.Models.AdministratorViewModels.AddServiceViewModel
+
+<body>
+<div class="container">
+    <form asp-action="AddService" method="post" class="form-group">
+        <label for="name">Ime usluge: </label>
+        <div id="name" class="row"><input type="text" class="form-control" asp-for="Name"/>
+        </div>
+        <label for="duration">Trajanje usluge(min): </label>
+        <div id="duration" class="row"><input type="text" class="form-control" asp-for="Duration"/>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="submit" class="btn btn-success" value="Potvrdi"/>
+            </div>
+            <div class="col-sm-2">
+                <a asp-action="Index" asp-controller="Administrator" class="btn btn-danger">Otkaži</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>

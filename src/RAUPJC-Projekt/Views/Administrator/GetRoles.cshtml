@@ -1,0 +1,30 @@
+﻿@model System.Collections.Generic.List<Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole>
+
+<body>
+<div class="container">
+    <div class="row"><h4>Sve uloge</h4></div>
+    <div class="row">
+        <table class="table table-condensed table-responsive table-hover">
+            <thead>
+            <tr>
+                <th>Ime uloge</th>
+                <th>Ukloni ulogu</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td>@role</td>
+                    <td>
+                        <a asp-action="RemoveRole" asp-controller="Administrator" asp-route-role="@role.Name" class="btn btn-danger">
+                            <span class="glyphicon-remove">Ukloni ulogu</span>
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>

@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Http
+@using RAUPJC_Projekt.Core
+@model RAUPJC_Projekt.Models.CustomerViewModels.TimePickerViewModel
+
+@inject IHttpContextAccessor HttpContextAccessor
+
+<body>
+<form asp-action="Add" method="post">
+    <div class="row">
+        <div class="col-sm-3">
+            <label for="termin">Odaberi vrijeme termina: </label>
+            <select id="termin" asp-for="Time" class="form-control" style="width: 100%">
+                <option></option>
+                @{
+                    var freeTerms = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<IList<DateTime>>(Constants.SessionKeyFreeTerms);
+                    foreach (var freeTerm in freeTerms)
+                    {
+                        <option value="@freeTerm">@freeTerm.ToString("HH:mm")</option>
+                    }
+                }
+            </select>
+            <span asp-validation-for="Time"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <label for="opis">Dodatne informacije(opcionalno): </label>
+            <input id="opis" asp-for="Description" type="text" class="form-control"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <input type="submit" class="btn btn-info"/>
+        </div>
+    </div>
+</form>
+</body>

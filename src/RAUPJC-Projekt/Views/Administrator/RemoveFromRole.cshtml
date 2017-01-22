@@ -1,0 +1,36 @@
+﻿@using System.Threading.Tasks
+@using Microsoft.AspNetCore.Http
+@using RAUPJC_Projekt.Core
+
+@model RAUPJC_Projekt.Models.AdministratorViewModels.RoleViewModel
+
+@inject IHttpContextAccessor HttpContextAccessor
+
+<body>
+<div class="container">
+    <div class="row"><h4>Ukloni ulogu</h4></div>
+    <form asp-action="RemoveFromRole" method="post" class="form-group">
+        <div class="row">
+                <label for="selectrole" class="label">Odaberi ulogu</label>
+                <select asp-for="RoleName" class="form-control" id="selectrole">
+                    @{
+                        var user = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<ApplicationUser>(Constants.SessionKeyUser);
+                        var roles = HttpContextAccessor.HttpContext.Session.GetObjectFromJson<IList<string>>(Constants.SessionKeyRoles);
+                        foreach (var role in roles)
+                        {
+                            <option value="@role">@role</option>
+                        }
+                    }
+                </select>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="submit" class="btn btn-success" value="Potvrdi"/>
+            </div>
+            <div class="col-sm-2">
+                <a asp-action="Index" asp-controller="Administrator" class="btn btn-danger">Otkaži</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
