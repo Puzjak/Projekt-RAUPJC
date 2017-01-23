@@ -29,6 +29,7 @@ Korisnik neće moći obrisati termin ako je ostao 1 dan do izvršenja dok zaposl
 
 Postoji mogućnost logina sa Facebookom, ali postoji "bug", a to je da se korisnici koji se prijave na ovaj način ne stave u Customer rolu, zbog čega je nad CustomerControllerom samo [Authorize] tag, ali još se problem stvara i kod dohvata svih klijenata jer se dohvaćaju svi korisnici koji su u Customer roli.
 
-Otkriven bug
+Otkriven bugovi
 - eventi ostaju na kalendaru nakon što se izbrišu u bazi
 - TermDatePartialView se ne poklapa sa nekim table headovima
+- gumb "Opis" ne radi na nekim Viewovima, treba dodati skriptu
