@@ -28,3 +28,7 @@ Rola samo za korisnike, omogućuje da korisnici mogu kreirati svoj termin i bris
 Korisnik neće moći obrisati termin ako je ostao 1 dan do izvršenja dok zaposlenici i administrator to mogu. 
 
 Postoji mogućnost logina sa Facebookom, ali postoji "bug", a to je da se korisnici koji se prijave na ovaj način ne stave u Customer rolu, zbog čega je nad CustomerControllerom samo [Authorize] tag, ali još se problem stvara i kod dohvata svih klijenata jer se dohvaćaju svi korisnici koji su u Customer roli.
+
+Otkriven bug
+- eventi ostaju na kalendaru nakon što se izbrišu u bazi
+- TermDatePartialView se ne poklapa sa nekim table headovima
