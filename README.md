@@ -33,3 +33,4 @@ Otkriven bugovi
 - eventi ostaju na kalendaru nakon što se izbrišu u bazi
 - TermDatePartialView se ne poklapa sa nekim table headovima
 - gumb "Opis" ne radi na nekim Viewovima, treba dodati skriptu
+- uklanjanje uloge korisniku ne funkcionira
