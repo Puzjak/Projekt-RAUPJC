@@ -1,6 +1,6 @@
 # Projekt-RAUPJC
 
-Link aplikacije: 
+Link aplikacije: https://frizerskistudioelegant.azurewebsites.net/
 
 Aplikacija nije do kraja završena. Ima osnovnu funkcionalnost, ali fali dizajn i još neke site stvari tako da se nadam da ćete barem ovaj back-end dio ocijeniti :)
 
