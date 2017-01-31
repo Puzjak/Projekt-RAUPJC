@@ -11,9 +11,9 @@ Kalendaru mogu pristupiti i ne registrirani korisnici.
 Postoje 3 uloge: Customer, Employee, Administrator
 
 1) Administrator
-Prilikom prvog pokretanja aplikacije kreira se slijedeći admin račun
-username: admin@gmail.com
-password: Ovojesifrazaadmina1!
+Prilikom prvog pokretanja aplikacije kreira se slijedeći admin račun</br>
+username: admin@gmail.com</br>
+password: Ovojesifrazaadmina1!</br>
 Admin ima mogućnost da kreira i obriše role i usluge, dodijeljuje korisnicima role, briše korisnike i slično. 
 Ako je korisnik u administrator roli na navbaru se pojavi dodatan Administrator gumb sa admin funkcionalnostima. 
 Pri kreiranju se admin također stavi u Employee i Customer role.
